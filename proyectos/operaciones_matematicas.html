@@ -74,9 +74,9 @@
         
         <strong>🧠 Lógica de PSeInt Implementada:</strong>
         <ul>
-            <li>**Operación Secuencial:** El algoritmo ejecuta una serie de pasos fijos: lee dos números y luego realiza los cálculos uno tras otro.</li>
-            <li>**Aritmética Básica:** Implementa los operadores $+$, $-$, y el cálculo de **promedio**, demostrando la capacidad de PSeInt para manejar lógica matemática.</li>
-            <li>**Definición Real:** Todas las variables se definen como **`Real`** (`float` en JavaScript) para permitir el ingreso y el cálculo de números decimales, asegurando la precisión en operaciones como el promedio.</li>
+            <li>Operación Secuencial: El algoritmo ejecuta una serie de pasos fijos: lee dos números y luego realiza los cálculos uno tras otro.</li>
+            <li>Aritmética Básica: Implementa los operadores $+$, $-$, y el cálculo de **promedio**, demostrando la capacidad de PSeInt para manejar lógica matemática.</li>
+            <li>Definición Real: Todas las variables se definen como `Real` (`float` en JavaScript) para permitir el ingreso y el cálculo de números decimales, asegurando la precisión en operaciones como el promedio.</li>
         </ul>
     </div>
     
@@ -104,7 +104,7 @@
             if (isNaN(nun1) || isNaN(nun2)) {
                 resultadoHTML.style.backgroundColor = '#f8d7da';
                 resultadoHTML.style.border = '1px solid #f5c6cb';
-                resultadoHTML.innerHTML = "🚨 **ERROR:** Por favor, ingrese números válidos en ambos campos.";
+                resultadoHTML.innerHTML = "🚨 ERROR: Por favor, ingrese números válidos en ambos campos.";
                 return;
             }
             
@@ -123,11 +123,11 @@
             
             resultadoHTML.innerHTML = 
                 `<strong>Resultados de las Operaciones:</strong><br>` +
-                `Suma (${nun1} + ${nun2}): **${suma.toFixed(2)}**<br>` +
-                `Resta (${nun1} - ${nun2}): **${rsta.toFixed(2)}**<br>` +
-                `Multiplicación (${nun1} * ${nun2}): **${multiplicacion.toFixed(2)}**<br>` +
+                `Suma (${nun1} + ${nun2}): ${suma.toFixed(2)}<br>` +
+                `Resta (${nun1} - ${nun2}): ${rsta.toFixed(2)}<br>` +
+                `Multiplicación (${nun1} * ${nun2}): ${multiplicacion.toFixed(2)}<br>` +
                 `<br>` +
-                `El Promedio de los dos números es: **${promedio.toFixed(2)}**`;
+                `El Promedio de los dos números es: ${promedio.toFixed(2)}`;
         }
     </script>
 </body>

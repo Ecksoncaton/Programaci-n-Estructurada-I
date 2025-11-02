@@ -74,9 +74,9 @@
         
         <strong>🧠 Lógica de PSeInt Implementada:</strong>
         <ul>
-            <li>**Operación Secuencial:** El algoritmo sigue una secuencia de pasos fijos: suma, cálculo de porcentaje 1, cálculo de porcentaje 2.</li>
-            <li>**Cálculo de Total:** Se calcula la **suma** (`total = hombres + mujeres`) como denominador para los porcentajes.</li>
-            <li>**Fórmula de Porcentaje:** Se implementa la fórmula clásica: $Parte \times 100 / Total$. En PSeInt, esto utiliza variables **`Real`** para asegurar un resultado con decimales.</li>
+            <li>Operación Secuencial: El algoritmo sigue una secuencia de pasos fijos: suma, cálculo de porcentaje 1, cálculo de porcentaje 2.</li>
+            <li>Cálculo de Total: Se calcula la suma (`total = hombres + mujeres`) como denominador para los porcentajes.</li>
+            <li>Fórmula de Porcentaje: Se implementa la fórmula clásica: $Parte \times 100 / Total$. En PSeInt, esto utiliza variables `Real` para asegurar un resultado con decimales.</li>
         </ul>
     </div>
     
@@ -104,7 +104,7 @@
             if (isNaN(hombres) || isNaN(mujeres) || hombres < 0 || mujeres < 0) {
                 resultadoHTML.style.backgroundColor = '#f8d7da';
                 resultadoHTML.style.border = '1px solid #f5c6cb';
-                resultadoHTML.innerHTML = "🚨 **ERROR:** Por favor, ingrese números enteros válidos y positivos para ambos campos.";
+                resultadoHTML.innerHTML = "🚨 ERROR: Por favor, ingrese números enteros válidos y positivos para ambos campos.";
                 return;
             }
             
@@ -113,7 +113,7 @@
             if (total === 0) {
                  resultadoHTML.style.backgroundColor = '#fff3cd';
                  resultadoHTML.style.border = '1px solid #ffeeba';
-                 resultadoHTML.innerHTML = "⚠️ **Advertencia:** El total de alumnos es 0, no se puede calcular el porcentaje.";
+                 resultadoHTML.innerHTML = "⚠️ Advertencia: El total de alumnos es 0, no se puede calcular el porcentaje.";
                  return;
             }
 
@@ -127,10 +127,10 @@
             
             resultadoHTML.innerHTML = 
                 `<strong>Resumen:</strong><br>` +
-                `Total de Alumnos: **${total}**<br>` +
+                `Total de Alumnos: ${total}<br>` +
                 `<br>` +
-                `El porcentaje de Hombres es del: **${porcentaje_hom.toFixed(2)}%**<br>` +
-                `El porcentaje de Mujeres es del: **${porcentaje_muj.toFixed(2)}%**`;
+                `El porcentaje de Hombres es del: ${porcentaje_hom.toFixed(2)}%<br>` +
+                `El porcentaje de Mujeres es del: ${porcentaje_muj.toFixed(2)}%`;
         }
     </script>
 </body>
