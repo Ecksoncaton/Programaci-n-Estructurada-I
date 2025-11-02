@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Portafolio de Proyectos PSeInt | Galería de Mosaicos</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Portafolio de Proyectos de Algoritmia 🧩</h1>
+        <p>Explora los proyectos. Pasa el ratón sobre un mosaico para ver los detalles y las opciones de ejecución.</p>
+    </header>
+
+    <div class="tiles-container">
+        
+        <div class="project-tile color-1" onclick="openModal('modalCredito')">
+            <div class="tile-icon">💰</div>
+            <h3>Calculadora de Crédito</h3>
+            
+            <div class="tile-overlay">
+                <p>Determina el crédito aprobado (30% o 5%) basándose en el sueldo (S/ 3500).</p>
+                <p class="tile-logic">Lógica: Condicionales Si/Sino</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalCredito')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoCredito')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/calcular_credito.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-tile color-2" onclick="openModal('modalRegalo')">
+            <div class="tile-icon">🎁</div>
+            <h3>Descuento o Regalo</h3>
+            
+            <div class="tile-overlay">
+                <p>Aplica un descuento fijo (S/ 100) o un Polo de regalo, según el monto de compra (S/ 2000).</p>
+                <p class="tile-logic">Lógica: Condicionales Si/Sino</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalRegalo')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoRegalo')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/calcular_descuento_o_regalo.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+                </div>
+            </div>
+        </div>
+        <div class="project-tile color-3" onclick="openModal('modalPorcentaje')">
+            <div class="tile-icon">🧑‍💻</div>
+            <h3>Porcentaje de Aula</h3>
+            
+            <div class="tile-overlay">
+                <p>Calcula el porcentaje de hombres y mujeres dentro del total de alumnos de un aula.</p>
+                <p class="tile-logic">Lógica: Operación Secuencial y Flotante</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalPorcentaje')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoPorcentaje')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/porcentaje_hombres_mujeres.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+                </div>
+            </div>
+        </div>
+        <div class="project-tile color-4" onclick="openModal('modalOperaciones')">
+            <div class="tile-icon">🔢</div>
+            <h3>Operaciones Básicas</h3>
+            
+            <div class="tile-overlay">
+                <p>Realiza suma, resta, multiplicación y promedio de dos números, ilustrando lógica secuencial.</p>
+                <p class="tile-logic">Lógica: Secuencial y Aritmética</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalOperaciones')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoOperaciones')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/operaciones_matematicas.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="modalCredito" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalCredito')">&times;</span>
+            <h4>Ejecución en Vivo: Calculadora de Crédito</h4>
+            <iframe src="proyectos/calculadora_credito.html" frameborder="0" width="100%" height="350px"></iframe>
+        </div>
+    </div>
+    
+    <div id="modalCodigoCredito" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close" onclick="closeModal('modalCodigoCredito')">&times;</span>
+            <h4>Código Fuente (PSeInt)</h4>
+            <div class="code-view">
+                <pre class="pseudocodigo">
+Algoritmo calcular_credito
+    Definir sueldo, credito Como Real
+    
+    Repetir
+        Escribir "Ingrese el sueldo del empleado en soles: "
+        Leer sueldo
+    Hasta Que sueldo > 0
+    
+    Si sueldo > 3500 Entonces
+        credito <- sueldo * 0.30
+        Escribir "El crédito aprobado es del 30% del sueldo: ", credito, " soles."
+    Sino
+        credito <- sueldo * 0.05
+        Escribir "El crédito aprobado es del 5% del sueldo: ", credito, " soles."
+    Fin Si
+FinAlgoritmo
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalRegalo" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalRegalo')">&times;</span>
+            <h4>Ejecución en Vivo: Descuento o Regalo</h4>
+            <iframe src="proyectos/descuento_o_regalo.html" frameborder="0" width="100%" height="350px"></iframe>
+        </div>
+    </div>
+    
+    <div id="modalCodigoRegalo" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close" onclick="closeModal('modalCodigoRegalo')">&times;</span>
+            <h4>Código Fuente (PSeInt)</h4>
+            <div class="code-view">
+                <pre class="pseudocodigo">
+Algoritmo calcular_descuento_o_regalo
+    Definir compra Como Real
+    Definir descuento Como Real
+    Definir regalo Como Cadena
+    
+    Escribir "Ingrese el monto de la compra en soles: "
+    Leer compra
+    
+    Si compra > 2000 Entonces
+        descuento <- 100
+        Escribir "El cliente recibe un descuento de S/. ", descuento, " en su compra."
+    Sino
+        regalo <- "Polo de la tienda"
+        Escribir "El cliente recibe un ", regalo, "."
+    Fin Si
+FinAlgoritmo
+                </pre>
+            </div>
+        </div>
+    </div>
+<div id="modalPorcentaje" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalPorcentaje')">&times;</span>
+        <h4>Ejecución en Vivo: Porcentaje de Aula</h4>
+        <iframe src="proyectos/porcentaje_hombres_mujeres.html" frameborder="0" width="100%" height="350px"></iframe>
+    </div>
+</div>
+
+<div id="modalCodigoPorcentaje" class="modal">
+    <div class="modal-content large-modal">
+        <span class="close" onclick="closeModal('modalCodigoPorcentaje')">&times;</span>
+        <h4>Código Fuente (PSeInt)</h4>
+        <div class="code-view">
+            <pre class="pseudocodigo">
+Algoritmo porcentaje_hombres_mujeres
+	Definir hombres, mujeres, total Como Entero
+	Definir porcentaje_hom, porcentaje_muj	Como Real
+	
+	Escribir "Ingresar el número de Hombres en el aula"
+	Leer hombres
+	Escribir "Ingresar el número de Mujeres en el Aula"
+	leer mujeres
+	total = hombres + mujeres
+	Escribir "El total de Alumnos en el Aula es de: ", total
+	porcentaje_hom = (hombres * 100) / total
+	porcentaje_muj = (mujeres * 100) / total
+	Escribir "El porcetanje de Hombres en aula es del: ", porcentaje_hom, "%"
+	Escribir "El porcetanje de Mujeres en aula es del: ", porcentaje_muj, "%"	
+FinAlgoritmo
+            </pre>
+        </div>
+    </div>
+</div>
+
+<div id="modalOperaciones" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalOperaciones')">&times;</span>
+        <h4>Ejecución en Vivo: Operaciones Matemáticas</h4>
+        <iframe src="proyectos/operaciones_matematicas.html" frameborder="0" width="100%" height="350px"></iframe>
+    </div>
+</div>
+
+<div id="modalCodigoOperaciones" class="modal">
+    <div class="modal-content large-modal">
+        <span class="close" onclick="closeModal('modalCodigoOperaciones')">&times;</span>
+        <h4>Código Fuente (PSeInt)</h4>
+        <div class="code-view">
+            <pre class="pseudocodigo">
+Algoritmo operaciones_matematicas
+    Definir nun1, nun2, suma, rsta, multiplicacion, promedio Como Real
+    Escribir "Ingresar Primer número"
+    Leer nun1
+    Escribir "Ingrese el Segundo número"
+    Leer nun2
+    suma = nun1 + nun2
+    Escribir "La suma de los dos números es: ", suma
+    rsta = nun1 - nun2
+    Escribir "La resta de los dos número es: ",rsta
+    promedio = (nun1 + nun2)/2
+    Escribir "El Promedio de los dos numeros es: ",promedio
+FinAlgoritmo
+            </pre>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        // Cierra el modal si el usuario hace clic fuera de él
+        window.onclick = function(event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+        
+        function showCode(id) {
+             openModal(id);
+        }
+        
+        // Evita que el click del overlay abra el modal principal dos veces (solo necesario si el click de tile no funciona)
+        document.querySelectorAll('.button-group-tile button, .button-group-tile a').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+    </script>
+</body>
+</html>

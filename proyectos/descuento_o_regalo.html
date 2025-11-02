@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Descuento o Regalo - Muestra Interactiva</title>
+    <style>
+        /* CSS para la interfaz de ejecución dentro del modal/iframe */
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff; /* Fondo azul muy claro */
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #ffc107; /* Amarillo para destacar la promoción */
+            color: #333; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #e0a800; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Calcular Descuento o Regalo 🎁</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Este algoritmo automatiza la política de incentivos de una tienda. Soluciona el problema de determinar qué beneficio (descuento fijo o un artículo de regalo) se aplica a un cliente basándose en el monto total de su compra.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>Estructura Condicional: El núcleo del algoritmo es la estructura `Si...Entonces...Sino`. Esta bifurca la ejecución en dos caminos exclusivos:
+                <ul>
+                    <li>Si la Compra > S/ 2000, se asigna un descuento fijo de S/ 100.</li>
+                    <li>Si la Compra ≤ S/ 2000, se asigna una cadena de regalo** (el "Polo de la tienda").</li>
+                </ul>
+            </li>
+            <li>**Variables de Tipo Mixto:** El algoritmo maneja valores numéricos (`compra`, `descuento`) y cadenas de texto (`regalo`).</li>
+        </ul>
+    </div>
+    
+    <label for="inputCompra">Ingrese el monto de la compra en soles:</label>
+    <input type="number" id="inputCompra" placeholder="Monto de la compra (Ej: 2500)" min="0">
+    
+    <button onclick="aplicarPromocion()">Aplicar Promoción</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function aplicarPromocion() {
+            // 1. Definir variables y obtener entrada
+            let compra = parseFloat(document.getElementById("inputCompra").value);
+            let resultadoHTML = document.getElementById("resultado");
+            let descuento = 0;
+            let regalo = "";
+
+            // Limpia estilos previos
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+            // Validación básica
+            if (isNaN(compra) || compra < 0) {
+                resultadoHTML.style.backgroundColor = '#f8d7da';
+                resultadoHTML.style.border = '1px solid #f5c6cb';
+                resultadoHTML.innerHTML = "🚨 ERROR: Por favor, ingrese un monto de compra válido (mayor o igual a 0).";
+                return;
+            }
+
+            // 2. Simular la estructura 'Si... Entonces... Sino'
+            if (compra > 2000) {
+                // Caso: Descuento
+                descuento = 100;
+                let nuevoMonto = compra - descuento;
+                resultadoHTML.style.backgroundColor = '#d4edda'; // Fondo verde claro
+                resultadoHTML.style.border = '1px solid #c3e6cb';
+                resultadoHTML.innerHTML = `✅ ¡Felicidades! Usted recibe un descuento de S/. ${descuento.toFixed(2)}. <br> Nuevo total de la compra: S/. ${nuevoMonto.toFixed(2)}.`;
+            } else {
+                // Caso: Regalo
+                regalo = "Polo de la tienda";
+                resultadoHTML.style.backgroundColor = '#fff3cd'; // Fondo amarillo claro
+                resultadoHTML.style.border = '1px solid #ffeeba';
+                resultadoHTML.innerHTML = `🎁 ¡Gracias por su compra! Usted recibe un ${regalo}.`;
+            }
+        }
+    </script>
+</body>
+</html>

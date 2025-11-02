@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Operaciones Matemáticas - Muestra Interactiva</title>
+    <style>
+        /* Estilos específicos para la interfaz de ejecución */
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #0d6efd; /* Azul para operaciones */
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #0b5ed7; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Operaciones Matemáticas Básicas ➕➖➗</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Este algoritmo realiza las cuatro operaciones aritméticas fundamentales (suma, resta, multiplicación, división) y calcula el promedio de dos números dados, mostrando los resultados en secuencia.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>**Operación Secuencial:** El algoritmo ejecuta una serie de pasos fijos: lee dos números y luego realiza los cálculos uno tras otro.</li>
+            <li>**Aritmética Básica:** Implementa los operadores $+$, $-$, y el cálculo de **promedio**, demostrando la capacidad de PSeInt para manejar lógica matemática.</li>
+            <li>**Definición Real:** Todas las variables se definen como **`Real`** (`float` en JavaScript) para permitir el ingreso y el cálculo de números decimales, asegurando la precisión en operaciones como el promedio.</li>
+        </ul>
+    </div>
+    
+    <label for="inputNum1">Ingresar Primer Número (nun1):</label>
+    <input type="number" id="inputNum1" placeholder="Ej: 25">
+
+    <label for="inputNum2">Ingrese el Segundo Número (nun2):</label>
+    <input type="number" id="inputNum2" placeholder="Ej: 10">
+    
+    <button onclick="realizarOperaciones()">Calcular Resultados</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function realizarOperaciones() {
+            // 1. Obtener entradas como números reales (float)
+            let nun1 = parseFloat(document.getElementById("inputNum1").value);
+            let nun2 = parseFloat(document.getElementById("inputNum2").value);
+            let resultadoHTML = document.getElementById("resultado");
+
+            // Limpieza de estilos y validación
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+            if (isNaN(nun1) || isNaN(nun2)) {
+                resultadoHTML.style.backgroundColor = '#f8d7da';
+                resultadoHTML.style.border = '1px solid #f5c6cb';
+                resultadoHTML.innerHTML = "🚨 **ERROR:** Por favor, ingrese números válidos en ambos campos.";
+                return;
+            }
+            
+            // 2. Ejecutar las operaciones (PSeInt: suma, rsta, promedio)
+            let suma = nun1 + nun2;
+            let rsta = nun1 - nun2;
+            
+            // Incluimos la multiplicación para un conjunto completo de operaciones
+            let multiplicacion = nun1 * nun2; 
+            
+            let promedio = (nun1 + nun2) / 2;
+
+            // 3. Mostrar resultados
+            resultadoHTML.style.backgroundColor = '#d4edda';
+            resultadoHTML.style.border = '1px solid #c3e6cb';
+            
+            resultadoHTML.innerHTML = 
+                `<strong>Resultados de las Operaciones:</strong><br>` +
+                `Suma (${nun1} + ${nun2}): **${suma.toFixed(2)}**<br>` +
+                `Resta (${nun1} - ${nun2}): **${rsta.toFixed(2)}**<br>` +
+                `Multiplicación (${nun1} * ${nun2}): **${multiplicacion.toFixed(2)}**<br>` +
+                `<br>` +
+                `El Promedio de los dos números es: **${promedio.toFixed(2)}**`;
+        }
+    </script>
+</body>
+</html>

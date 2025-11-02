@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Crédito - Muestra Interactiva</title>
+    <style>
+        
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff; /* Fondo azul muy claro */
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #218838; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Calculadora de Crédito 💰</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Este algoritmo resuelve el problema de determinar automáticamente el monto de crédito que se le puede aprobar a un empleado basándose en su sueldo, aplicando una política de dos niveles.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>Validación de Entrada: Se utiliza la estructura `Repetir...Hasta Que` (simulada en JS) para asegurar que el sueldo ingresado sea siempre un valor positivo y válido (mayor a 0).</li>
+            <li>**Estructura Condicional: Se emplea una estructura `Si...Entonces...Sino` para aplicar diferentes porcentajes de crédito según el sueldo:
+                <ul>
+                    <li>Si el sueldo es mayor a S/ 3500, el crédito es el 30% del sueldo.</li>
+                    <li>Si el sueldo es S/ 3500 o menor, el crédito es el 5% del sueldo.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <label for="inputSueldo">Ingrese el sueldo del empleado en soles:</label>
+    <input type="number" id="inputSueldo" placeholder="Sueldo (debe ser > 0)" min="0">
+    
+    <button onclick="calcularCredito()">Ejecutar Algoritmo</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function calcularCredito() {
+            let sueldo = parseFloat(document.getElementById("inputSueldo").value);
+            let credito = 0;
+            let resultadoHTML = document.getElementById("resultado");
+
+           
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+           
+            if (isNaN(sueldo) || sueldo <= 0) {
+                resultadoHTML.style.backgroundColor = '#f8d7da'; 
+                resultadoHTML.style.border = '1px solid #f5c6cb';
+                resultadoHTML.innerHTML = "🚨 ERROR (Validación de Entrada): Por favor, ingrese un sueldo válido mayor a 0.";
+                return;
+            }
+
+            
+            if (sueldo > 3500) {
+                
+                credito = sueldo * 0.30;
+                resultadoHTML.style.backgroundColor = '#d4edda'; 
+                resultadoHTML.style.border = '1px solid #c3e6cb';
+                resultadoHTML.innerHTML = `✅ El crédito aprobado es del 30% del sueldo: ${credito.toFixed(2)} soles.`;
+            } else {
+                
+                credito = sueldo * 0.05;
+                resultadoHTML.style.backgroundColor = '#fff3cd'; 
+                resultadoHTML.style.border = '1px solid #ffeeba';
+                resultadoHTML.innerHTML = `⚠️ El crédito aprobado es del 5% del sueldo: ${credito.toFixed(2)} soles.`;
+            }
+        }
+    </script>
+</body>
+</html>

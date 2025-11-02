@@ -1,0 +1,16 @@
+Algoritmo calcular_descuento_o_regalo
+    Definir compra Como Real
+    Definir descuento Como Real
+    Definir regalo Como Cadena
+	
+    Escribir "Ingrese el monto de la compra en soles: "
+    Leer compra
+	
+    Si compra > 2000 Entonces
+        descuento <- 100
+        Escribir "El cliente recibe un descuento de S/. ", descuento, " en su compra."
+    Sino
+        regalo <- "Polo de la tienda"
+        Escribir "El cliente recibe un ", regalo, "."
+    Fin Si
+FinAlgoritmo 

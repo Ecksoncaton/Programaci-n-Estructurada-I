@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Porcentaje Hombres/Mujeres - Muestra Interactiva</title>
+    <style>
+        /* Estilos específicos para la interfaz de ejecución */
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #ff5733; /* Color llamativo para este proyecto */
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #c70039; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Porcentaje de Hombres y Mujeres 📊</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Este algoritmo resuelve el problema estadístico de obtener la distribución porcentual de dos grupos (hombres y mujeres) dentro de una población total (el aula), basándose en conteos absolutos.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>**Operación Secuencial:** El algoritmo sigue una secuencia de pasos fijos: suma, cálculo de porcentaje 1, cálculo de porcentaje 2.</li>
+            <li>**Cálculo de Total:** Se calcula la **suma** (`total = hombres + mujeres`) como denominador para los porcentajes.</li>
+            <li>**Fórmula de Porcentaje:** Se implementa la fórmula clásica: $Parte \times 100 / Total$. En PSeInt, esto utiliza variables **`Real`** para asegurar un resultado con decimales.</li>
+        </ul>
+    </div>
+    
+    <label for="inputHombres">Número de Hombres en el Aula:</label>
+    <input type="number" id="inputHombres" placeholder="Ingrese un número entero (Ej: 15)" min="0">
+
+    <label for="inputMujeres">Número de Mujeres en el Aula:</label>
+    <input type="number" id="inputMujeres" placeholder="Ingrese un número entero (Ej: 10)" min="0">
+    
+    <button onclick="calcularPorcentajes()">Calcular Porcentajes</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function calcularPorcentajes() {
+            // 1. Obtener entradas (PSeInt: Leer hombres, leer mujeres)
+            let hombres = parseInt(document.getElementById("inputHombres").value);
+            let mujeres = parseInt(document.getElementById("inputMujeres").value);
+            let resultadoHTML = document.getElementById("resultado");
+
+            // Limpieza de estilos y validación
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+            if (isNaN(hombres) || isNaN(mujeres) || hombres < 0 || mujeres < 0) {
+                resultadoHTML.style.backgroundColor = '#f8d7da';
+                resultadoHTML.style.border = '1px solid #f5c6cb';
+                resultadoHTML.innerHTML = "🚨 **ERROR:** Por favor, ingrese números enteros válidos y positivos para ambos campos.";
+                return;
+            }
+            
+            let total = hombres + mujeres; // PSeInt: total = hombres + mujeres
+            
+            if (total === 0) {
+                 resultadoHTML.style.backgroundColor = '#fff3cd';
+                 resultadoHTML.style.border = '1px solid #ffeeba';
+                 resultadoHTML.innerHTML = "⚠️ **Advertencia:** El total de alumnos es 0, no se puede calcular el porcentaje.";
+                 return;
+            }
+
+            // 2. Cálculos de Porcentaje (PSeInt: porcentaje_hom, porcentaje_muj)
+            let porcentaje_hom = (hombres * 100) / total;
+            let porcentaje_muj = (mujeres * 100) / total;
+
+            // 3. Mostrar resultados
+            resultadoHTML.style.backgroundColor = '#d4edda';
+            resultadoHTML.style.border = '1px solid #c3e6cb';
+            
+            resultadoHTML.innerHTML = 
+                `<strong>Resumen:</strong><br>` +
+                `Total de Alumnos: **${total}**<br>` +
+                `<br>` +
+                `El porcentaje de Hombres es del: **${porcentaje_hom.toFixed(2)}%**<br>` +
+                `El porcentaje de Mujeres es del: **${porcentaje_muj.toFixed(2)}%**`;
+        }
+    </script>
+</body>
+</html>
