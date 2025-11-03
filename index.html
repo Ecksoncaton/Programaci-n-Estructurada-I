@@ -71,9 +71,75 @@
                 </div>
             </div>
         </div>
-        
+        <div class="project-tile color-5" onclick="openModal('modalNacionalidad')">
+            <div class="tile-icon">✈️</div>
+            <h3>Costo por Nacionalidad</h3>
+    
+            <div class="tile-overlay">
+                <p>Calcula el costo de un viaje con tarifas diferentes para peruanos y extranjeros (estructuras anidadas).</p>
+                <p class="tile-logic">Lógica: Segun Anidado (Switch)</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalNacionalidad')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoNacion')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/caso_multiple_nacionalidad.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+                </div>
+            </div>
+         </div>
+        <div class="project-tile color-6" onclick="openModal('modalEdad')">
+            <div class="tile-icon">👶</div>
+            <h3>Clasificador de Edad</h3>
+            
+            <div class="tile-overlay">
+                <p>Clasifica a una persona en una de cuatro categorías de edad (Niño, Adolescente, Adulto, Mayor).</p>
+                <p class="tile-logic">Lógica: Condicionales Anidados Si/Sino Si</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalEdad')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoEdad')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/clasificar_edad2.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+                </div>
+            </div>
+        </div>
+        <div class="project-tile color-7" onclick="openModal('modalPasaje')">
+            <div class="tile-icon">🎟️</div>
+            <h3>Descuento en Pasaje</h3>
+            
+            <div class="tile-overlay">
+                <p>Calcula el costo final de un pasaje aplicando un descuento condicional por nacionalidad (Peruano vs Extranjero).</p>
+                <p class="tile-logic">Lógica: Segun Caso (Switch)</p>
+                <div class="button-group-tile">
+                    <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalPasaje')">▶️</button>
+                    <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoPasaje')">&lt;/&gt;</button>
+                    <a href="archivos_pseint/Segun_caso_CostoPasaje.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+        </div>
     </div>
+</div>
+<div class="project-tile color-8" onclick="openModal('modalPrecioDia')">
+    <div class="tile-icon">🏷️</div>
+    <h3>Precio por Día (Segun)</h3>
+    
+    <div class="tile-overlay">
+        <p>Determina el precio de un ticket usando la estructura SEGUN para agrupar días de la semana con la misma tarifa.</p>
+        <p class="tile-logic">Lógica: Segun Caso (Agrupado)</p>
+        <div class="button-group-tile">
+            <button class="btn-tile btn-ejecutar" onclick="event.stopPropagation(); openModal('modalPrecioDia')">▶️</button>
+            <button class="btn-tile btn-codigo" onclick="event.stopPropagation(); showCode('modalCodigoPrecioDia')">&lt;/&gt;</button>
+            <a href="archivos_pseint/Caso_Precio_Dia_numero.psc" download class="btn-tile btn-descargar" onclick="event.stopPropagation();">💾</a>
+        </div>
+    </div>
+</div>
 
+
+
+
+
+
+
+
+
+
+
+</div>
+    
     <div id="modalCredito" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('modalCredito')">&times;</span>
@@ -83,29 +149,11 @@
     </div>
     
     <div id="modalCodigoCredito" class="modal">
-        <div class="modal-content large-modal">
+        <div class="modal-content ">
             <span class="close" onclick="closeModal('modalCodigoCredito')">&times;</span>
             <h4>Código Fuente (PSeInt)</h4>
-            <div class="code-view">
-                <pre class="pseudocodigo">
-Algoritmo calcular_credito
-    Definir sueldo, credito Como Real
-    
-    Repetir
-        Escribir "Ingrese el sueldo del empleado en soles: "
-        Leer sueldo
-    Hasta Que sueldo > 0
-    
-    Si sueldo > 3500 Entonces
-        credito <- sueldo * 0.30
-        Escribir "El crédito aprobado es del 30% del sueldo: ", credito, " soles."
-    Sino
-        credito <- sueldo * 0.05
-        Escribir "El crédito aprobado es del 5% del sueldo: ", credito, " soles."
-    Fin Si
-FinAlgoritmo
-                </pre>
-            </div>
+            <iframe src="pseudocodigo/calcular_credito.html" frameborder="0" width="100%" height="350px"></iframe>
+            
         </div>
     </div>
 
@@ -116,31 +164,12 @@ FinAlgoritmo
             <iframe src="proyectos/descuento_o_regalo.html" frameborder="0" width="100%" height="350px"></iframe>
         </div>
     </div>
-    
     <div id="modalCodigoRegalo" class="modal">
-        <div class="modal-content large-modal">
+        <div class="modal-content ">
             <span class="close" onclick="closeModal('modalCodigoRegalo')">&times;</span>
             <h4>Código Fuente (PSeInt)</h4>
-            <div class="code-view">
-                <pre class="pseudocodigo">
-Algoritmo calcular_descuento_o_regalo
-    Definir compra Como Real
-    Definir descuento Como Real
-    Definir regalo Como Cadena
-    
-    Escribir "Ingrese el monto de la compra en soles: "
-    Leer compra
-    
-    Si compra > 2000 Entonces
-        descuento <- 100
-        Escribir "El cliente recibe un descuento de S/. ", descuento, " en su compra."
-    Sino
-        regalo <- "Polo de la tienda"
-        Escribir "El cliente recibe un ", regalo, "."
-    Fin Si
-FinAlgoritmo
-                </pre>
-            </div>
+            <iframe src="pseudocodigo/calcular_descuento_o_regalo.html" frameborder="0" width="100%" height="350px"></iframe>
+            
         </div>
     </div>
 <div id="modalPorcentaje" class="modal">
@@ -152,62 +181,99 @@ FinAlgoritmo
 </div>
 
 <div id="modalCodigoPorcentaje" class="modal">
-    <div class="modal-content large-modal">
+    <div class="modal-content">
         <span class="close" onclick="closeModal('modalCodigoPorcentaje')">&times;</span>
         <h4>Código Fuente (PSeInt)</h4>
-        <div class="code-view">
-            <pre class="pseudocodigo">
-Algoritmo porcentaje_hombres_mujeres
-	Definir hombres, mujeres, total Como Entero
-	Definir porcentaje_hom, porcentaje_muj	Como Real
-	
-	Escribir "Ingresar el número de Hombres en el aula"
-	Leer hombres
-	Escribir "Ingresar el número de Mujeres en el Aula"
-	leer mujeres
-	total = hombres + mujeres
-	Escribir "El total de Alumnos en el Aula es de: ", total
-	porcentaje_hom = (hombres * 100) / total
-	porcentaje_muj = (mujeres * 100) / total
-	Escribir "El porcetanje de Hombres en aula es del: ", porcentaje_hom, "%"
-	Escribir "El porcetanje de Mujeres en aula es del: ", porcentaje_muj, "%"	
-FinAlgoritmo
-            </pre>
-        </div>
+        <iframe src="pseudocodigo/porcentaje_hombres_mujeres.html" frameborder="0" width="100%" height="350px"></iframe>
     </div>
-</div>
-
+</div>        
 <div id="modalOperaciones" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('modalOperaciones')">&times;</span>
-        <h4>Ejecución en Vivo: Operaciones Matemáticas</h4>
+        <h4>Ejecución en Vivo: Porcentaje de Aula</h4>
         <iframe src="proyectos/operaciones_matematicas.html" frameborder="0" width="100%" height="350px"></iframe>
     </div>
 </div>
 
 <div id="modalCodigoOperaciones" class="modal">
-    <div class="modal-content large-modal">
+    <div class="modal-content">
         <span class="close" onclick="closeModal('modalCodigoOperaciones')">&times;</span>
         <h4>Código Fuente (PSeInt)</h4>
-        <div class="code-view">
-            <pre class="pseudocodigo">
-Algoritmo operaciones_matematicas
-    Definir nun1, nun2, suma, rsta, multiplicacion, promedio Como Real
-    Escribir "Ingresar Primer número"
-    Leer nun1
-    Escribir "Ingrese el Segundo número"
-    Leer nun2
-    suma = nun1 + nun2
-    Escribir "La suma de los dos números es: ", suma
-    rsta = nun1 - nun2
-    Escribir "La resta de los dos número es: ",rsta
-    promedio = (nun1 + nun2)/2
-    Escribir "El Promedio de los dos numeros es: ",promedio
-FinAlgoritmo
-            </pre>
-        </div>
+        <iframe src="pseudocodigo/operaciones_matematicas.html" frameborder="0" width="100%" height="350px"></iframe>
     </div>
 </div>
+<div id="modalNacionalidad" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalNacionalidad')">&times;</span>
+        <h4>Ejecución en Vivo: Costo de Viaje por Nacionalidad</h4>
+        <iframe src="proyectos/caso_multiple_nacionalidad.html" frameborder="0" width="100%" height="350px"></iframe>
+    </div>
+</div>
+
+<div id="modalCodigoNacion" class="modal">
+    <div class="modal-content large-modal">
+        <span class="close" onclick="closeModal('modalCodigoNacion')">&times;</span>
+        <h4>Código Fuente (PSeInt)</h4>
+        <iframe src="pseudocodigo/caso_multiple_nacionalidad.html" frameborder="0" width="100%" height="350px"></iframe>
+    </div>
+</div>
+
+<div id="modalEdad" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalEdad')">&times;</span>
+        <h4>Ejecución en Vivo: Clasificador de Edad</h4>
+        <iframe src="proyectos/clasificar_edad.html" frameborder="0" width="100%" height="350px"></iframe>
+    </div>
+</div>
+
+<div id="modalCodigoEdad" class="modal">
+    <div class="modal-content large-modal">
+        <span class="close" onclick="closeModal('modalCodigoEdad')">&times;</span>
+        <h4>Código Fuente (PSeInt)</h4>
+        <iframe src="pseudocodigo/clasificar_edad.html" frameborder="0" width="100%" height="350px"></iframe>
+    </div>
+</div>
+
+<div id="modalPasaje" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalPasaje')">&times;</span>
+        <h4>Ejecución en Vivo: Descuento en Pasaje</h4>
+        <iframe src="proyectos/costo_pasaje.html" frameborder="0" width="100%" height="380px"></iframe>
+    </div>
+</div>
+
+<div id="modalCodigoPasaje" class="modal">
+    <div class="modal-content large-modal">
+        <span class="close" onclick="closeModal('modalCodigoPasaje')">&times;</span>
+        <h4>Código Fuente (PSeInt)</h4>
+        <iframe src="pseudocodigo/costo_pasaje.html" frameborder="0" width="100%" height="380px"></iframe>
+    </div>
+</div>
+
+<div id="modalPrecioDia" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modalPrecioDia')">&times;</span>
+        <h4>Ejecución en Vivo: Precio de Ticket por Día</h4>
+        <iframe src="proyectos/precio_dia_numero.html" frameborder="0" width="100%" height="380px"></iframe>
+    </div>
+</div>
+
+<div id="modalCodigoPrecioDia" class="modal">
+    <div class="modal-content large-modal">
+        <span class="close" onclick="closeModal('modalCodigoPrecioDia')">&times;</span>
+        <h4>Código Fuente (PSeInt)</h4>
+        <iframe src="pseudocodigo/precio_dia_numero.html" frameborder="0" width="100%" height="380px"></iframe>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
     <script>
         function openModal(id) {
@@ -231,7 +297,7 @@ FinAlgoritmo
              openModal(id);
         }
         
-        // Evita que el click del overlay abra el modal principal dos veces (solo necesario si el click de tile no funciona)
+      
         document.querySelectorAll('.button-group-tile button, .button-group-tile a').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();

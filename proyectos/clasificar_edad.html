@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clasificador de Edad - Muestra Interactiva</title>
+    <style>
+        /* Estilos específicos para la interfaz de ejecución */
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #f39c12; /* Color amarillo/naranja para esta acción */
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #e67e22; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Clasificador de Edad por Categoría 👶👴</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Este algoritmo clasifica a una persona en una de cuatro categorías de edad (Niño, Adolescente, Adulto, Adulto Mayor) utilizando reglas secuenciales. La solución es eficiente porque no evalúa todas las condiciones si una ya se cumplió.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>Condicionales Anidados (`Si...Sino Si...`): La lógica clave. Permite evaluar rangos de edad de forma jerárquica. Por ejemplo, si una persona no es "Niño" (`edad < 13` no se cumple), pasa a evaluar la siguiente categoría, simplificando las condiciones.</li>
+            <li>Flujo de Descarte: El uso de `Sino Si` es crucial, ya que si `edad < 13` es verdadero, el programa no verifica si es `edad < 18` o `edad < 60`.</li>
+        </ul>
+    </div>
+    
+    <label for="inputEdad">Ingresar edad:</label>
+    <input type="number" id="inputEdad" placeholder="Edad (Ej: 35)" min="0">
+    
+    <button onclick="clasificarEdad()">Clasificar Categoría</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function clasificarEdad() {
+            // 1. Obtener entrada (convertida a entero)
+            let edad = parseInt(document.getElementById("inputEdad").value);
+            let resultadoHTML = document.getElementById("resultado");
+            let categoria = "Edad No Válida";
+
+            // Limpieza de estilos y mensajes
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+            // Validación inicial
+            if (isNaN(edad) || edad < 0) {
+                 resultadoHTML.style.backgroundColor = '#f8d7da';
+                 resultadoHTML.style.border = '1px solid #f5c6cb';
+                 resultadoHTML.innerHTML = "🚨 ERROR: Por favor, ingrese una edad válida y positiva.";
+                 return;
+            }
+
+            // 2. Estructura Condicional Anidada (Simulando el Si...Sino Si... de PSeInt)
+            if (edad < 13) {
+                // Caso 1: Niño(a)
+                categoria = "Niño(a)";
+            } else if (edad < 18) {
+                // Caso 2: Adolescente (Sabemos que es >= 13)
+                categoria = "Adolescente";
+            } else if (edad < 60) {
+                // Caso 3: Adulto (Sabemos que es >= 18)
+                categoria = "Adulto";
+            } else {
+                // Caso 4: Adulto Mayor (Si no cae en ninguno de los anteriores)
+                categoria = "Adulto Mayor";
+            }
+
+            // 3. Mostrar el resultado final
+            resultadoHTML.style.backgroundColor = '#d4edda';
+            resultadoHTML.style.border = '1px solid #c3e6cb';
+            resultadoHTML.innerHTML = `A la edad de ${edad} años Es un: ${categoria}`;
+        }
+    </script>
+</body>
+</html>

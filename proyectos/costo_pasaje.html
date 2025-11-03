@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Descuento en Pasaje - Muestra Interactiva</title>
+    <style>
+        /* Estilos específicos para la interfaz de ejecución */
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #e74c3c; /* Color rojo/coral para este ejercicio */
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #c0392b; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Descuento de Pasaje por Nacionalidad 🎟️</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Calcula el costo final de un pasaje aplicando un descuento del 15% solo a ciudadanos peruanos (opción 1). <br> Para extranjeros (opción 2), el descuento es 0%.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>Estructura `Segun` (Switch): Se usa para asignar el valor de la variable `dscto` (0.15 o 0) de manera limpia y rápida, basándose en la `nacion`.</li>
+            <li>Fórmula de Costo Final: El cálculo (`Costo_final = costo - (costo * dscto)`) se realiza fuera del `Segun`, una buena práctica para reducir código repetido.</li>
+        </ul>
+    </div>
+    
+    <label for="inputNacion">Nacionalidad:</label>
+    <select id="inputNacion">
+        <option value="0">Seleccione Nacionalidad</option>
+        <option value="1">1 - Peruano (15% Dscto)</option>
+        <option value="2">2 - Extranjero (0% Dscto)</option>
+    </select>
+
+    <label for="inputCosto">Costo del Pasaje (S/.):</label>
+    <input type="number" id="inputCosto" placeholder="Ej: 500.00" min="0">
+    
+    <button onclick="calcularCostoFinal()">Calcular Descuento y Costo Final</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function calcularCostoFinal() {
+            // 1. Obtener entradas
+            let nacion = parseInt(document.getElementById("inputNacion").value);
+            let costo = parseFloat(document.getElementById("inputCosto").value);
+            let resultadoHTML = document.getElementById("resultado");
+            let dscto = 0;
+            let mensaje = "";
+
+            // Limpieza de estilos y mensajes
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+            // Validación inicial
+            if (nacion === 0 || isNaN(costo) || costo <= 0) {
+                 resultadoHTML.style.backgroundColor = '#f8d7da';
+                 resultadoHTML.style.border = '1px solid #f5c6cb';
+                 resultadoHTML.innerHTML = "🚨 ERROR: Por favor, seleccione nacionalidad e ingrese un costo válido (> 0).";
+                 return;
+            }
+
+            // 2. Estructura SWITCH (Simulando el SEGUN de PSeInt)
+            switch (nacion) {
+                case 1: // Peruano
+                    dscto = 0.15;
+                    break;
+                case 2: // Extranjero
+                    dscto = 0;
+                    break;
+                default:
+                    mensaje = "nacionalidad incorrecta";
+                    break;
+            }
+
+            // 3. Cálculos finales
+            let monto_dscto = costo * dscto;
+            let Costo_final = costo - monto_dscto;
+            
+            // 4. Mostrar resultados
+            if (mensaje !== "") {
+                resultadoHTML.style.backgroundColor = '#fff3cd';
+                resultadoHTML.style.border = '1px solid #ffeeba';
+                resultadoHTML.innerHTML = `⚠️ ERROR EN DATOS: ${mensaje}`;
+            } else {
+                resultadoHTML.style.backgroundColor = '#d4edda';
+                resultadoHTML.style.border = '1px solid #c3e6cb';
+                resultadoHTML.innerHTML = `
+                    <p>El descuento es: ${(dscto * 100).toFixed(0)}%</p>
+                    <p>El monto de descuento es: S/ ${monto_dscto.toFixed(2)}</p>
+                    <p>El Monto Final es: S/ ${Costo_final.toFixed(2)}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

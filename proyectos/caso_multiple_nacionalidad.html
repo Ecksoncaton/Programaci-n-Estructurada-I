@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Caso Múltiple Nacionalidad - Muestra Interactiva</title>
+    <style>
+        /* Estilos específicos para la interfaz de ejecución */
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background-color: #ffffff;
+        }
+        h4 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .analisis {
+            background-color: #e9f5ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .analisis strong {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        /* Usa selectores en lugar de inputs para las opciones de Segun */
+        select { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px;
+            box-sizing: border-box; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button { 
+            padding: 12px; 
+            width: 100%; 
+            background-color: #008080; /* Color turquesa/teal para viajes */
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover { 
+            background-color: #006666; 
+        }
+        .resultado-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 5px;
+            min-height: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Algoritmo: Costo de Viaje por Nacionalidad ✈️</h4>
+    
+    <div class="analisis">
+        <strong>🎯 Solución que Brinda:</strong>
+        <p>Este algoritmo determina el costo de un viaje a una ciudad peruana. La solución aplica una tarifa dinámica basada en dos criterios jerárquicos: primero la Nacionalidad y luego el Destino, mostrando la eficiencia del control de flujo anidado.</p>
+        
+        <strong>🧠 Lógica de PSeInt Implementada:</strong>
+        <ul>
+            <li>Estructura Anidada (`Segun` anidado): El algoritmo utiliza un `Segun` principal para la `nacion` y, dentro de cada caso, otro `Segun` para el `destino`. Esto es ideal para manejar múltiples combinaciones de condiciones (matriz de costos).</li>
+            <li>Manejo de Casos de Error: Incluye la cláusula `De Otro Modo` (equivalente a `default` en `switch` de JS) para capturar datos de entrada inválidos tanto en nacionalidad como en destino.</li>
+        </ul>
+    </div>
+    
+    <label for="inputNacion">Nacionalidad:</label>
+    <select id="inputNacion">
+        <option value="0">Seleccione Nacionalidad</option>
+        <option value="1">Peruano</option>
+        <option value="2">Extranjero</option>
+    </select>
+
+    <label for="inputDestino">Destino:</label>
+    <select id="inputDestino">
+        <option value="0">Seleccione Destino</option>
+        <option value="1">Cuzco</option>
+        <option value="2">Arequipa</option>
+        <option value="3">Trujillo</option>
+    </select>
+    
+    <button onclick="calcularCosto()">Calcular Costo del Viaje</button>
+    
+    <div id="resultado" class="resultado-area"></div>
+
+    <script>
+        function calcularCosto() {
+            // 1. Obtener entradas (convertidas a entero)
+            let nacion = parseInt(document.getElementById("inputNacion").value);
+            let destino = parseInt(document.getElementById("inputDestino").value);
+            let resultadoHTML = document.getElementById("resultado");
+            let costo = 0.0;
+            let mensaje = "";
+
+            // Limpieza de estilos y mensajes
+            resultadoHTML.style.backgroundColor = 'transparent';
+            resultadoHTML.style.border = 'none';
+
+            // Validación inicial: Si no seleccionó nada (valor 0)
+            if (nacion === 0 || destino === 0) {
+                 resultadoHTML.style.backgroundColor = '#f8d7da';
+                 resultadoHTML.style.border = '1px solid #f5c6cb';
+                 resultadoHTML.innerHTML = "🚨 ERROR: Por favor, seleccione una Nacionalidad y un Destino válidos.";
+                 return;
+            }
+
+            // 2. Estructura SWITCH anidada (Simulando el SEGUN anidado de PSeInt)
+            switch (nacion) {
+                case 1: // Nacionalidad Peruana
+                    switch (destino) {
+                        case 1: // Cuzco
+                            costo = 200.0;
+                            break;
+                        case 2: // Arequipa
+                            costo = 180.0;
+                            break;
+                        case 3: // Trujillo
+                            costo = 120.0;
+                            break;
+                        default:
+                            mensaje = "?? Destino no Existe";
+                            break;
+                    }
+                    break;
+                case 2: // Nacionalidad Extranjera
+                    switch (destino) {
+                        case 1: // Cuzco
+                            costo = 300.0;
+                            break;
+                        case 2: // Arequipa
+                            costo = 280.0;
+                            break;
+                        case 3: // Trujillo
+                            costo = 220.0;
+                            break;
+                        default:
+                            mensaje = "?? Destino no Existe";
+                            break;
+                    }
+                    break;
+                default:
+                    mensaje = "? Error de nacionalidad (Opción no válida)";
+                    break;
+            }
+
+            // 3. Muestra el resultado final (Simulando el Si costo > 0)
+            if (costo > 0) {
+                resultadoHTML.style.backgroundColor = '#d4edda';
+                resultadoHTML.style.border = '1px solid #c3e6cb';
+                resultadoHTML.innerHTML = `✅ El costo final del viaje es: S/ ${costo.toFixed(2)}`;
+            } else if (mensaje !== "") {
+                resultadoHTML.style.backgroundColor = '#fff3cd';
+                resultadoHTML.style.border = '1px solid #ffeeba';
+                resultadoHTML.innerHTML = `⚠️ ERROR EN DATOS: ${mensaje}`;
+            }
+        }
+    </script>
+</body>
+</html>
